@@ -32,6 +32,9 @@ namespace TicTacToe
             }
             //zapisz do guzika aktywnego gracza 
             button.Text = activePlayer.ToString();
+            //sprawdzamy czy ktoœ wygra³
+            CheckResult();
+            //zmiana gracza
             SwitchPlayer();
             //zablokuj guzik
             //button.Enabled = false;
@@ -51,6 +54,20 @@ namespace TicTacToe
                     //jeœli s¹ takie same to wygrywa gracz który ma taki sam znak
                     //nie ma znaczenia z którego guzika pobieramy tekst
                     MessageBox.Show("Wygra³ gracz: " + TopLeft.Text);
+                }
+            }
+            //sprawdzamy czy ¿aden z guzików w œrodkowym wierszu nie jest pusty
+            if (CenterLeft.Text != String.Empty &&
+                CenterCenter.Text != String.Empty &&
+                CenterRight.Text != String.Empty)
+            {
+                //jeœli nie ma pustych sprawdzamy czy lewy i œrodkowy oraz
+                // œrodkowy i prawy s¹ takie same
+                if (CenterLeft.Text == CenterCenter.Text && CenterCenter.Text == CenterRight.Text)
+                {
+                    //jeœli s¹ takie same to wygrywa gracz który ma taki sam znak
+                    //nie ma znaczenia z którego guzika pobieramy tekst
+                    MessageBox.Show("Wygra³ gracz: " + CenterLeft.Text);
                 }
             }
         }
